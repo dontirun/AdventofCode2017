@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Day2Part1 {
 
     public static void main(String[] args) {
-        File spreadsheet = new File("C:\\Users\\donti\\Documents\\GitHub\\AdventOfCode\\src\\spreadsheet.txt");
+        File spreadsheet = new File("spreadsheet.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(spreadsheet))) {
             String line;
             int checksum = 0;
