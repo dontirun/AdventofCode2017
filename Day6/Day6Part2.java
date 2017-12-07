@@ -2,12 +2,9 @@ package Day6;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
-public class Day6Part1 {
+public class Day6Part2 {
     public static void main (String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(new File("memoryBanks.txt"));
         // populate the arraylist with bank values
@@ -20,7 +17,7 @@ public class Day6Part1 {
 
 
         // use this to find the first duplicate configuration we find
-        Set<Double> checkDuplicates = new HashSet<>();
+        Set<Double> checkDuplicates = new LinkedHashSet<>();
         // keep going until we get a duplicate
         int loops = 0;
         for(;;){
@@ -39,8 +36,21 @@ public class Day6Part1 {
           //  System.out.println(hash);
             // if we reach a duplicate
             if(!checkDuplicates.add(hash)){
-                System.out.println(loops);
+                //System.out.println(hash);
+                List<Double> list = new ArrayList<Double>(checkDuplicates);
+                for(int i = 0; i<list.size();i++){
+                    if(list.get(i).equals(hash)){
+                        System.out.println(loops - i);
+                        break;
+                    }
+                    else{
+                        //System.out.println(list.get(i));
+                    }
+                }
+                //System.out.println(loops);
                 break;
+
+
             }
             // move the bank values
             jumps.set(highestValueIndex,0);
